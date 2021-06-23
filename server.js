@@ -9,4 +9,16 @@ app.use(express.static('public'));
 
 const PORT = process.env.PORT || 3000;
 
+app.get('/', (req, res) => {
+    fs.readFile('states.json', function(err, data) {
+        if (err) {
+            res.status(500).end();
+        } else {
+            res.render('states.ejs', {
+                states: JSON.parse(data)
+            });
+        }
+    });
+});
+
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));

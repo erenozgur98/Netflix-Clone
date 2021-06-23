@@ -1,17 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/style.css">
     <script src="../public/index.js" defer></script>
-    <script>
-        let key = '<%= key %>'
-    </script>
     <title>States</title>
 </head>
+
 <body>
-    
+    <header class="main-header">
+        <nav class="nav main-nav">
+            <li><a href='/login'>Login</a></li>
+            <li><a href='/signup'>SignUp</a></li>
+        </nav>
+        <div>
+            <h1>Welcome To State Tracker!</h1>
+            <h2>Here you can track the states you have been in!</h2>
+        </div>
+    </header>
+    <main>
+        <section class="container">
+            <div class="states">
+                <% states.states.forEach(function(item){ %>
+                    <div class="state" data-item-id="<%= item.id %>">
+                        <span class="state-item-title">
+                            <%= item.name %>
+                        </span>
+                        <input id="<%= item.id %>" type="checkbox" />
+                    </div>
+                    <% }) %>
+            </div>
+        </section>
+    </main>
 </body>
+
 </html>
