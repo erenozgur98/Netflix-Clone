@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const passport = require('passport');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const LocalStrategy = require('passport-local');
 const passportLocalMongoose = require('passport-local-mongoose');
 const User = require('./models/User');
@@ -40,7 +40,7 @@ const PORT = process.env.PORT || 3000;
 
 // Routes
 
-app.get('/', (req, res) => {
+app.get('/', isLoggedIn, (req, res) => {
     fs.readFile('states.json', function (err, data) {
         if (err) {
             res.status(500).end();
@@ -88,5 +88,10 @@ app.get('/logout', (req, res) => {
     req.logOut();
     res.redirect('/');
 })
+
+isLoggedIn = (req, res, next) => {
+    if (req.isAuthenticated()) return next();
+    res.redirect('/login');
+};
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
