@@ -21,4 +21,12 @@ app.get('/', (req, res) => {
     });
 });
 
+app.get('/signup', (req, res) => {
+    res.render('signup.ejs');
+});
+
+app.get('/login', (req, res) => {
+    res.render('login.ejs');
+});
+
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
