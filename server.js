@@ -32,15 +32,15 @@ app.use(passport.session());
 app.use(express.json());
 app.use(express.static('public'));
 
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(Use.deserializeUser());
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 const PORT = process.env.PORT || 3000;
 
 // Routes
 
-app.get('/', isLoggedIn, (req, res) => {
+app.get('/', (req, res) => {
     fs.readFile('states.json', function (err, data) {
         if (err) {
             res.status(500).end();
@@ -89,9 +89,9 @@ app.get('/logout', (req, res) => {
     res.redirect('/');
 })
 
-isLoggedIn = (req, res, next) => {
-    if (req.isAuthenticated()) return next();
-    res.redirect('/login');
-};
+// const isLoggedIn = (req, res, next) => {
+//     if (req.isAuthenticated()) return next();
+//     res.redirect('/login');
+// };
 
 app.listen(PORT, () => console.log(`App listening on PORT ${PORT}`));
