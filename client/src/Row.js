@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import axios from "./axios";
 import "./Row.css";
 
-const base_url = "https://image.tmdb.org/t/p/original/";
+const base_url = "https://image.tmdb.org/t/p/w200/";
 
-function Row({ title, fetchUrl }) {
+function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
 
   // A snipped of code which runs based on a specific condition/variable
@@ -28,8 +28,11 @@ function Row({ title, fetchUrl }) {
 
         {movies.map((movie) => (
           <img
-            className="row-poster"
-            src={`${base_url}${movie.poster_path}`}
+            key={movie.id}
+            className={`row-poster ${isLargeRow && "row-posterLarge"}`}
+            src={`${base_url}${
+              isLargeRow ? movie.poster_path : movie.backdrop_path
+            }`}
             alt={movie.name}
           />
         ))}
