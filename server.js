@@ -17,3 +17,8 @@ app.get("*", function(req, res) {
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
+
+
+// let baseUrl = 'https://api.themoviedb.org/3/';
+//         let apiKey = 'af737f76cdba5b7435e17cc94568c07d';
+//         let IMGurl = 'https://image.tmdb.org/t/p/w300';
