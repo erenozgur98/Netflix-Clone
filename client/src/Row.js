@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "./axios";
 import "./Row.css";
+import YouTube from "react-youtube";
 
 const base_url = "https://image.tmdb.org/t/p/w200/";
 
 function Row({ title, fetchUrl, isLargeRow }) {
   const [movies, setMovies] = useState([]);
+  const [trailerUrl, setTrailerUrl] = useState('');
 
   // A snipped of code which runs based on a specific condition/variable
   useEffect(() => {
@@ -16,6 +18,14 @@ function Row({ title, fetchUrl, isLargeRow }) {
     }
     fetchData();
   }, [fetchUrl]);
+
+  const opts = {
+    heigth: '390',
+    width: '100%',
+    playerVars: {
+      autoplay:1,
+    }
+  }
 
   return (
     <div className="row">
@@ -35,7 +45,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
           />
         ))}
       </div>
-      {/* container -> posters */}
+      {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
     </div>
   );
 }
