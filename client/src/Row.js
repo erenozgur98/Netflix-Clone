@@ -6,7 +6,7 @@ import movieTrailer from 'movie-trailer';
 
 const base_url = "https://image.tmdb.org/t/p/w200/";
 
-function Row({ title, fetchUrl, isLargeRow }) {
+function Row({ title, fetchUrl }) {
   const [movies, setMovies] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState('');
 
@@ -27,6 +27,8 @@ function Row({ title, fetchUrl, isLargeRow }) {
       autoplay:1,
     }
   };
+
+  console.log(movies);
 
   const handleClick = (movie) => {
     if (trailerUrl) {
@@ -54,10 +56,8 @@ function Row({ title, fetchUrl, isLargeRow }) {
           <img
             key={movie.id}
             onClick={() => handleClick(movie)}
-            className={`row-poster ${isLargeRow && "row-posterLarge"}`}
-            src={`${base_url}${
-              isLargeRow ? movie.poster_path : movie.backdrop_path
-            }`}
+            className="row-poster"
+            src={`${base_url}${movie.poster_path}`}
             alt={movie.name}
           />
         ))}
