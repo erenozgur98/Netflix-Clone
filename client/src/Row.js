@@ -28,8 +28,6 @@ function Row({ title, fetchUrl }) {
     }
   };
 
-  console.log(movies);
-
   const handleClick = (movie) => {
     if (trailerUrl) {
       setTrailerUrl('');
@@ -48,10 +46,7 @@ function Row({ title, fetchUrl }) {
   return (
     <div className="row">
       <h2>{title}</h2>
-
       <div className="row-posters">
-        {/* several row-poster(s) */}
-
         {movies.map((movie) => (
           <img
             key={movie.id}

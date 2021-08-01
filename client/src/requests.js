@@ -27,4 +27,7 @@ const requests = {
 
 export default requests;
 
-// https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${query}&page=1&include_adult=false
+// const query = 'avengers'
+// const language = 'en-US'
+
+// https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=${language}&query=${query}&page=1&include_adult=false
